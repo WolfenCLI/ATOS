@@ -142,3 +142,5 @@ tournamentAnnouncmentStartBO5: ":five: Les **BO5** commenceront quant à eux :\n
 tournamentAnnouncmentElse: ":five: Les **BO5** commenceront en **top 8**."
 
 tournamentAnnouncmentLast: "\n\n*L'équipe de TO et moi-même vous souhaitons un excellent tournoi !*"
+
+tournamentEnd: "{0} Le tournoi **{1}** est terminé, merci à toutes et à tous d'avoir participé ! J'espère vous revoir bientôt."

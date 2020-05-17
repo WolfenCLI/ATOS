@@ -90,7 +90,7 @@ async def on_member_join(member):
                                                                                      roles_channel_id,
                                                                                      bot_prefix))
     else:
-        await bot.get_channel(blabla_channel_id).send(message) # Avoid sending welcome_text to the channel if possible
+        await bot.get_channel(blabla_channel_id).send(message)  # Avoid sending welcome_text to the channel if possible
 
 
 ### Récupérer informations du tournoi et initialiser tournoi.json
@@ -334,9 +334,7 @@ async def end_tournament(ctx):
 
     # Annoucements (including results)
     await annonce_resultats()
-    await bot.get_channel(annonce_channel_id).send(
-        f"{server_logo} Le tournoi **{tournoi['name']}** est terminé, merci à toutes et à tous d'avoir participé ! "
-        f"J'espère vous revoir bientôt.")
+    await bot.get_channel(annonce_channel_id).send(strings['tournamentEnd'].format(server_logo, tournoi['name']))
 
     # Reset participants
     participants.clear()
