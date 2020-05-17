@@ -603,13 +603,13 @@ async def rappel_check_in():
 
             if tournoi["fin_check-in"] - datetime.datetime.now() < datetime.timedelta(minutes=10):
                 try:
-                    await guild.get_member(inscrit).send(f"**Attention !** Il te reste moins d'une dizaine de minutes pour check-in au tournoi **{tournoi['name']}**.")
+                    await guild.get_member(inscrit).send(strings['rappelCheckin1'].format(tournoi['name']))
                 except discord.Forbidden:
                     pass
 
     if rappel_msg == "": return
 
-    await bot.get_channel(check_in_channel_id).send(":clock1: **Rappel de check-in !**")
+    await bot.get_channel(check_in_channel_id).send(strings['rappelCheckin2'])
 
     if len(rappel_msg) < 2000:
         await bot.get_channel(check_in_channel_id).send(rappel_msg)
@@ -619,7 +619,8 @@ async def rappel_check_in():
             await bot.get_channel(check_in_channel_id).send('\n'.join(rappel_msg[:50]))
             del rappel_msg[:50] # and send by groups of 50 people
 
-    await bot.get_channel(check_in_channel_id).send(f"*Vous avez jusqu'à {format_time(tournoi['fin_check-in'], format='short', locale=language)}, sinon vous serez désinscrit(s) automatiquement.*")
+    await bot.get_channel(check_in_channel_id).send(strings['rappelCheckin3'].format(format_time(
+        tournoi['fin_check-in'], format='short', locale=language)))
 
 
 ### Fin du check-in
