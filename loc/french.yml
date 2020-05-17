@@ -173,3 +173,5 @@ signupMsg1: "Tu t'es inscrit(e) avec succès pour le tournoi **{0}**."
 signupMsg2: " Tu n'as **pas besoin de check-in** comme le tournoi commence bientôt !"
 
 signupMsgEnd: "Il n'y a malheureusement plus de place pour le tournoi **{0}**. Retente ta chance plus tard, par exemple à la fin du check-in pour remplacer les absents !"
+
+leaveTournament: "Tu es désinscrit(e) du tournoi **{0}**. À une prochaine fois peut-être !"

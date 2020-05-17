@@ -549,7 +549,7 @@ async def desinscrire(member):
             await update_annonce()
 
             try:
-                await member.send(f"Tu es désinscrit(e) du tournoi **{tournoi['name']}**. À une prochaine fois peut-être !")
+                await member.send(strings['leaveTournament'].format(tournoi['name']))
             except discord.Forbidden:
                 pass
 
