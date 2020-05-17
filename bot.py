@@ -574,14 +574,15 @@ async def start_check_in():
 
     scheduler.add_job(rappel_check_in, 'interval', id='rappel_check_in', minutes=10, replace_existing=True)
 
-    await bot.get_channel(inscriptions_channel_id).send(f":information_source: Le check-in a commencé dans <#{check_in_channel_id}>. "
-                                                        f"Vous pouvez toujours vous inscrire ici jusqu'à **{format_time(tournoi['fin_inscription'], format='short', locale=language)}**.\n\n"
-                                                        f"*Toute personne s'inscrivant à partir de ce moment est **check-in automatiquement**.*")
+    await bot.get_channel(inscriptions_channel_id).send(strings['checkInStart'].format(check_in_channel_id,
+                                                                                       format_time(tournoi['fin_inscription'], format='short', locale=language)))
 
-    await bot.get_channel(check_in_channel_id).send(f"<@&{challenger_id}> Le check-in pour **{tournoi['name']}** a commencé ! "
-                                                    f"Vous avez jusqu'à **{format_time(tournoi['fin_check-in'], format='short', locale=language)}** pour signaler votre présence :\n"
-                                                    f":white_small_square: Utilisez `{bot_prefix}in` pour confirmer votre inscription\n:white_small_square: Utilisez `{bot_prefix}out` pour vous désinscrire\n\n"
-                                                    f"*Si vous n'avez pas check-in à temps, vous serez désinscrit automatiquement du tournoi.*")
+    await bot.get_channel(check_in_channel_id).send(strings['checkInStart2'].format(challenger_id,
+                                                                                    tournoi['name'],
+                                                                                    format_time(tournoi['fin_check-in'],
+                                                                                                format='short',
+                                                                                                locale=language),
+                                                                                    bot_prefix))
 
     await bot.get_channel(check_in_channel_id).set_permissions(challenger, read_messages=True, send_messages=True, add_reactions=False)
 

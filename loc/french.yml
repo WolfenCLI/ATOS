@@ -175,3 +175,11 @@ signupMsg2: " Tu n'as **pas besoin de check-in** comme le tournoi commence bient
 signupMsgEnd: "Il n'y a malheureusement plus de place pour le tournoi **{0}**. Retente ta chance plus tard, par exemple à la fin du check-in pour remplacer les absents !"
 
 leaveTournament: "Tu es désinscrit(e) du tournoi **{0}**. À une prochaine fois peut-être !"
+
+checkInStart: ":information_source: Le check-in a commencé dans <#{0}>. Vous pouvez toujours vous inscrire ici jusqu'à **{1}**.\n\n
+*Toute personne s'inscrivant à partir de ce moment est **check-in automatiquement**.*"
+
+checkInStart2: "<@&{0}> Le check-in pour **{1}** a commencé !
+ Vous avez jusqu'à **{2}** pour signaler votre présence :\n
+:white_small_square: Utilisez `{3}in` pour confirmer votre inscription\n:white_small_square: Utilisez `{3}out` pour vous désinscrire\n\n
+*Si vous n'avez pas check-in à temps, vous serez désinscrit automatiquement du tournoi.*"
