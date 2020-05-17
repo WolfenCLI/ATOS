@@ -629,9 +629,7 @@ async def end_check_in():
     guild = bot.get_guild(id=guild_id)
 
     await bot.get_channel(check_in_channel_id).set_permissions(guild.get_role(challenger_id), read_messages=True, send_messages=False, add_reactions=False)
-    await bot.get_channel(check_in_channel_id).send(":clock1: **Le check-in est terminé :**\n"
-                                                    ":white_small_square: Les personnes n'ayant pas check-in vont être retirées du tournoi.\n"
-                                                    ":white_small_square: Rappel : une inscription après le début du check-in ne néccessite pas de check-in.")
+    await bot.get_channel(check_in_channel_id).send(strings['endCheckin1'])
 
     try:
         scheduler.remove_job('rappel_check_in')
@@ -642,8 +640,7 @@ async def end_check_in():
         if participants[inscrit]["checked_in"] == False:
             await desinscrire(guild.get_member(inscrit))
 
-    await bot.get_channel(inscriptions_channel_id).send(":information_source: **Les absents du check-in ont été retirés** : "
-                                                        "des places sont peut-être libérées pour des inscriptions de dernière minute.\n")
+    await bot.get_channel(inscriptions_channel_id).send(strings['endCheckin2'])
 
 
 ### Fin des inscriptions

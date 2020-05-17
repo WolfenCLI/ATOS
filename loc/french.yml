@@ -189,3 +189,9 @@ rappelCheckin1: "**Attention !** Il te reste moins d'une dizaine de minutes pour
 rappelCheckin2: ":clock1: **Rappel de check-in !**"
 
 rappelCheckin3: "*Vous avez jusqu'à {0}, sinon vous serez désinscrit(s) automatiquement.*"
+
+endCheckin1: ":clock1: **Le check-in est terminé :**\n
+:white_small_square: Les personnes n'ayant pas check-in vont être retirées du tournoi.\n
+:white_small_square: Rappel : une inscription après le début du check-in ne néccessite pas de check-in."
+
+endCheckin2: ":information_source: **Les absents du check-in ont été retirés** : des places sont peut-être libérées pour des inscriptions de dernière minute.\n"
