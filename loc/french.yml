@@ -214,3 +214,21 @@ score7: "<@{0}> Dû à une coupure de Challonge, je n'ai pas pu envoyer ton scor
 score8: ":bell: __Score rapporté__ : **{0}** gagne **{1}** !\n
 *En cas d'erreur, appelez un TO ! Un mauvais score intentionnel est passable de DQ et ban du tournoi.*\n
 *Note: ce channel sera automatiquement supprimé 5 minutes à partir de la dernière activité.*"
+
+launchTopic: "Channel temporaire pour un set."
+launchReason: "Lancement du set n°{0}"
+
+gamingChannel1: ":video_game: Je n'ai pas pu créer de channel, faites votre set en MP ou dans <#{0}>."
+gamingChannel2: "Tu joueras on stream pour ton prochain set contre **{0}** : je te communiquerai les codes d'accès quand ce sera ton tour."
+gamingChannelElse1: ":video_game: Allez faire votre set dans le channel <#{0}> !"
+gamingChannelElse2: ":arrow_forward: **{0}** : <@{1}> vs <@{2}> {3}\n
+:white_small_square: Les règles du set doivent suivre celles énoncées dans <#{4}>.\n
+:white_small_square: La liste des stages légaux à l'heure actuelle est disponible via la commande `{5}stages`.\n
+:white_small_square: En cas de lag qui rend la partie injouable, utilisez la commande `{5}lag` pour résoudre la situation.\n
+:white_small_square: **Dès que le set est terminé**, le gagnant envoie le score dans <#{6}> avec la commande `{5}win`.\n\n
+:game_die: **{7}** est tiré au sort pour commencer le ban des stages *({8})*.\n"
+gamingChannelElse3: "{0} **Minimum buffer suggéré** : le host peut le faire calculer avec la commande `{1}buffer [ping]`.\n"
+gamingChannelElse4: ":five: Vous devez jouer ce set en **BO5** *(best of five)*.\n"
+gamingChannelElse5: ":three: Vous devez jouer ce set en **BO3** *(best of three)*.\n"
+gamingChannelElse6: ":tv: **Vous jouerez on stream**. Dès que ce sera votre tour, je vous communiquerai les codes d'accès."
+sets1: ":arrow_forward: **{0}** ({1}) : <@{2}> vs <@{3}> {4}\n{5} {6}\n\n"
