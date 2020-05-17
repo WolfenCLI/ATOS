@@ -656,7 +656,7 @@ async def end_inscription():
         inscriptions_role = guild.get_role(gamelist[tournoi['game']]['role']) if tournoi["restrict_to_role"] else guild.default_role
         await bot.get_channel(inscriptions_channel_id).set_permissions(inscriptions_role, read_messages=True, send_messages=False, add_reactions=False)
 
-    await bot.get_channel(inscriptions_channel_id).send(strings['endInscription1'])
+    await bot.get_channel(inscriptions_channel_id).send(strings['endInscription'])
 
     if tournoi["bulk_mode"]:
         await seed_participants(participants)
@@ -672,7 +672,7 @@ async def end_inscription():
 async def check_in(member):
     participants[member.id]["checked_in"] = True
     try:
-        await member.send(strings['endInscription2'])
+        await member.send(strings['checkin'])
     except discord.Forbidden:
         pass
 
