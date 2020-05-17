@@ -499,9 +499,9 @@ async def inscrire(member):
         await update_annonce()
 
         try:
-            msg = f"Tu t'es inscrit(e) avec succès pour le tournoi **{tournoi['name']}**."
+            msg = strings['signupMsg1'].format(tournoi['name'])
             if datetime.datetime.now() > tournoi["début_check-in"]:
-                msg += " Tu n'as **pas besoin de check-in** comme le tournoi commence bientôt !"
+                msg += strings['signupMsg2']
             await member.send(msg)
         except discord.Forbidden:
             pass
@@ -509,8 +509,7 @@ async def inscrire(member):
     elif tournoi["reaction_mode"] and len(participants) >= tournoi['limite']:
 
         try:
-            await member.send(f"Il n'y a malheureusement plus de place pour le tournoi **{tournoi['name']}**. "
-                              f"Retente ta chance plus tard, par exemple à la fin du check-in pour remplacer les absents !")
+            await member.send(strings['signupMsgEnd'].format(tournoi['name']))
         except discord.Forbidden:
             pass
 

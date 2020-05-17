@@ -167,3 +167,9 @@ subInscriptionAnnouncement5: "Discord général"
 
 InscriptionAnnouncementEnd: "{0} Inscriptions pour le **{1}** ouvertes dans <#{2}> ! Consultez-y les messages épinglés. <@&{3}>\n
 :calendar_spiral: Ce tournoi aura lieu le **{4} à {5}**."
+
+signupMsg1: "Tu t'es inscrit(e) avec succès pour le tournoi **{0}**."
+
+signupMsg2: " Tu n'as **pas besoin de check-in** comme le tournoi commence bientôt !"
+
+signupMsgEnd: "Il n'y a malheureusement plus de place pour le tournoi **{0}**. Retente ta chance plus tard, par exemple à la fin du check-in pour remplacer les absents !"
