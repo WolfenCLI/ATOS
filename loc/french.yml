@@ -93,6 +93,52 @@ SD : en haut à droite d'une fenêtre netplay, cliquer sur \"MD5 Check\" et choi
 :three: **Si ces informations ne suffisent pas, contactez un TO.**\n"
 
 TournamentCreationWarning1: ":warning: Création du tournoi *{0}* annulée : **jeu introuvable dans la gamelist**."
+
 TournamentCreationWarning2: ":warning: Création du tournoi *{0}* annulée : **conflit des temps de check-in et d'inscriptions**."
+
 TournamentCreationWarning3: ":warning: Création du tournoi *{0}* annulée: **données de ranking introuvables**.\n
 *Désactivez le bulk mode avec `{1}set bulk_mode off` si vous ne souhaitez pas utiliser de ranking.*"
+
+TournamentStart: "{0} Le tournoi **{1}** est officiellement lancé ! Voici le bracket: {2}\n
+:white_small_square: Vous pouvez y accéder à tout moment avec la commande `{3}bracket`.\n
+:white_small_square: Vous pouvez consulter les liens de stream avec la commande `{3}stream`."
+
+scoreAnnounce: ":information_source: La prise en charge des scores pour le tournoi **{0}** est automatisée :\n
+:white_small_square: Seul **le gagnant du set** envoie le score de son set, précédé par la **commande** `{1}win`.\n
+:white_small_square: Le message du score doit contenir le **format suivant**: `{1}win 2-0, 3-2, 3-1, ...`.\n
+:white_small_square: Un mauvais score intentionnel, perturbant le déroulement du tournoi, est **passable de DQ et ban**.\n
+:white_small_square: Consultez le bracket afin de **vérifier** les informations: {2}\n
+:white_small_square: En cas de mauvais score: contactez un TO pour une correction manuelle.\n\n
+:satellite_orbital: Chaque score étant **transmis un par un**, il est probable que la communication prenne jusqu'à 30 secondes."
+
+queueAnnounce: ":information_source: **Le lancement des sets est automatisé.** Veuillez suivre les consignes de ce channel, que ce soit par le bot ou les TOs.\n
+:white_small_square: Tout passage on stream sera notifié à l'avance, ici, dans votre channel (ou par DM).\n
+:white_small_square: Tout set devant se jouer en BO5 est indiqué ici, et également dans votre channel.\n
+:white_small_square: La personne qui commence les bans est indiquée dans votre channel (en cas de besoin: `{0}flip`).\n\n
+:timer: Vous serez **DQ automatiquement** si vous n'avez pas été actif sur votre channel __dans les {1} minutes qui suivent sa création__."
+
+tournamentAnnouncment: ":alarm_clock: <@&{0}> On arrête le freeplay ! Le tournoi est sur le point de commencer. Veuillez lire les consignes :\n
+:white_small_square: Vos sets sont annoncés dès que disponibles dans <#{1}>: **ne lancez rien sans consulter ce channel**.\n
+:white_small_square: Le ruleset ainsi que les informations pour le bannissement des stages sont dispo dans <#{2}>.\n
+:white_small_square: Le gagnant d'un set doit rapporter le score **dès que possible** dans <#{3}> avec la commande `{4}win`.\
+:white_small_square: Vous pouvez DQ du tournoi avec la commande `{4}dq`, ou juste abandonner votre set en cours avec `{4}ff`.\n
+:white_small_square: En cas de lag qui rend votre set injouable, utilisez la commande `{4}lag` pour résoudre la situation.\n
+:timer: Vous serez **DQ automatiquement** si vous n'avez pas été actif sur votre channel __dans les {5} minutes qui suivent sa création__."
+
+tournamentAnnouncmentConcat1: "\n{0} En cas de desync, utilisez la commande `{1}desync` pour résoudre la situation."
+
+tournamentAnnouncmentConcat2: "\n\n:fire: Le **top 8** commencera, d'après le bracket :\n
+:white_small_square: En **{0}**\n
+:white_small_square: En **{1}**\n\n"
+
+tournamentAnnouncmentBO3: ":three: L'intégralité du tournoi se déroulera en **BO3**."
+
+tournamentAnnouncmentBO5: ":five: L'intégralité du tournoi se déroulera en **BO5**."
+
+tournamentAnnouncmentStartBO5: ":five: Les **BO5** commenceront quant à eux :\n
+:white_small_square: En **{0}**\n
+:white_small_square: En **{1}**"
+
+tournamentAnnouncmentElse: ":five: Les **BO5** commenceront en **top 8**."
+
+tournamentAnnouncmentLast: "\n\n*L'équipe de TO et moi-même vous souhaitons un excellent tournoi !*"

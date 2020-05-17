@@ -273,56 +273,39 @@ async def start_tournament(ctx):
     with open(tournoi_path, 'r+') as f: tournoi = json.load(f, object_hook=dateparser) # Refresh to get top 8
     with open(gamelist_path, 'r+') as f: gamelist = yaml.full_load(f)
 
-    await bot.get_channel(annonce_channel_id).send(f"{server_logo} Le tournoi **{tournoi['name']}** est officiellement lancé ! Voici le bracket : {tournoi['url']}\n"
-                                                   f":white_small_square: Vous pouvez y accéder à tout moment avec la commande `{bot_prefix}bracket`.\n"
-                                                   f":white_small_square: Vous pouvez consulter les liens de stream avec la commande `{bot_prefix}stream`.")
+    await bot.get_channel(annonce_channel_id).send(strings['TournamentStart'].format(server_logo, tournoi['name'], tournoi['url'], bot_prefix))
 
-    score_annonce = (f":information_source: La prise en charge des scores pour le tournoi **{tournoi['name']}** est automatisée :\n"
-                     f":white_small_square: Seul **le gagnant du set** envoie le score de son set, précédé par la **commande** `{bot_prefix}win`.\n"
-                     f":white_small_square: Le message du score doit contenir le **format suivant** : `{bot_prefix}win 2-0, 3-2, 3-1, ...`.\n"
-                     f":white_small_square: Un mauvais score intentionnel, perturbant le déroulement du tournoi, est **passable de DQ et ban**.\n"
-                     f":white_small_square: Consultez le bracket afin de **vérifier** les informations : {tournoi['url']}\n"
-                     f":white_small_square: En cas de mauvais score : contactez un TO pour une correction manuelle.\n\n"
-                     f":satellite_orbital: Chaque score étant **transmis un par un**, il est probable que la communication prenne jusqu'à 30 secondes.")
-
-    await bot.get_channel(scores_channel_id).send(score_annonce)
+    await bot.get_channel(scores_channel_id).send(strings['scoreAnnounce'].format(tournoi['name'],
+                                                                                  bot_prefix,
+                                                                                  tournoi['url']))
     await bot.get_channel(scores_channel_id).set_permissions(challenger, read_messages=True, send_messages=True, add_reactions=False)
 
-    queue_annonce = (f":information_source: **Le lancement des sets est automatisé.** Veuillez suivre les consignes de ce channel, que ce soit par le bot ou les TOs.\n"
-                     f":white_small_square: Tout passage on stream sera notifié à l'avance, ici, dans votre channel (ou par DM).\n"
-                     f":white_small_square: Tout set devant se jouer en BO5 est indiqué ici, et également dans votre channel.\n"
-                     f":white_small_square: La personne qui commence les bans est indiquée dans votre channel (en cas de besoin : `{bot_prefix}flip`).\n\n"
-                     f":timer: Vous serez **DQ automatiquement** si vous n'avez pas été actif sur votre channel __dans les {tournoi['check_channel_presence']} minutes qui suivent sa création__.")
-
-    await bot.get_channel(queue_channel_id).send(queue_annonce)
-
-    tournoi_annonce = (f":alarm_clock: <@&{challenger_id}> On arrête le freeplay ! Le tournoi est sur le point de commencer. Veuillez lire les consignes :\n"
-                       f":white_small_square: Vos sets sont annoncés dès que disponibles dans <#{queue_channel_id}> : **ne lancez rien sans consulter ce channel**.\n"
-                       f":white_small_square: Le ruleset ainsi que les informations pour le bannissement des stages sont dispo dans <#{gamelist[tournoi['game']]['ruleset']}>.\n"
-                       f":white_small_square: Le gagnant d'un set doit rapporter le score **dès que possible** dans <#{scores_channel_id}> avec la commande `{bot_prefix}win`.\n"
-                       f":white_small_square: Vous pouvez DQ du tournoi avec la commande `{bot_prefix}dq`, ou juste abandonner votre set en cours avec `{bot_prefix}ff`.\n"
-                       f":white_small_square: En cas de lag qui rend votre set injouable, utilisez la commande `{bot_prefix}lag` pour résoudre la situation.\n"
-                       f":timer: Vous serez **DQ automatiquement** si vous n'avez pas été actif sur votre channel __dans les {tournoi['check_channel_presence']} minutes qui suivent sa création__.")
+    await bot.get_channel(queue_channel_id).send(strings['queueAnnounce'].format(bot_prefix,
+                                                                                 tournoi['check_channel_presence']))
+    tournoi_annonce = strings['tournamentAnnouncment'].format(challenger_id,
+                                                              queue_channel_id,
+                                                              gamelist[tournoi['game']]['ruleset'],
+                                                              scores_channel_id,
+                                                              bot_prefix,
+                                                              tournoi['check_channel_presence'])
 
     if tournoi["game"] == "Project+":
-        tournoi_annonce += f"\n{gamelist[tournoi['game']]['icon']} En cas de desync, utilisez la commande `{bot_prefix}desync` pour résoudre la situation."
+        tournoi_annonce += strings['tournamentAnnouncmentConcat1'].format(gamelist[tournoi['game']]['icon'], bot_prefix)
 
-    tournoi_annonce += (f"\n\n:fire: Le **top 8** commencera, d'après le bracket :\n"
-                        f":white_small_square: En **{nom_round(tournoi['round_winner_top8'])}**\n"
-                        f":white_small_square: En **{nom_round(tournoi['round_looser_top8'])}**\n\n")
+    tournoi_annonce += strings['tournamentAnnouncmentConcat2'].format(nom_round(tournoi['round_winner_top8']),
+                                                                      nom_round(tournoi['round_looser_top8']))
 
     if tournoi["full_bo3"]:
-        tournoi_annonce += ":three: L'intégralité du tournoi se déroulera en **BO3**."
+        tournoi_annonce += strings['tournamentAnnouncmentBO3']
     elif tournoi["full_bo5"]:
-        tournoi_annonce += ":five: L'intégralité du tournoi se déroulera en **BO5**."
+        tournoi_annonce += strings['tournamentAnnouncmentBO5']
     elif tournoi["start_bo5"] != 0:
-        tournoi_annonce += (f":five: Les **BO5** commenceront quant à eux :\n"
-                            f":white_small_square: En **{nom_round(tournoi['round_winner_bo5'])}**\n"
-                            f":white_small_square: En **{nom_round(tournoi['round_looser_bo5'])}**")
+        tournoi_annonce += strings['tournamentAnnouncmentStartBO5'].format(nom_round(tournoi['round_winner_bo5']),
+                                                                           nom_round(tournoi['round_looser_bo5']))
     else:
-        tournoi_annonce += ":five: Les **BO5** commenceront en **top 8**."
+        tournoi_annonce += strings['tournamentAnnouncmentElse']
 
-    tournoi_annonce += "\n\n*L'équipe de TO et moi-même vous souhaitons un excellent tournoi !*"
+    tournoi_annonce += strings['tournamentAnnouncmentLast']
 
     await bot.get_channel(tournoi_channel_id).send(tournoi_annonce)
 
