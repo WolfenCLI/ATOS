@@ -20,3 +20,36 @@ N'oublie pas de consulter les <#{3}> régulièrement, et de poser tes questions 
 \n
 Je te conseille de t'attribuer un rôle dans <#{5}> par la même occasion.\n
 Enfin, amuse-toi bien ! *Tu peux obtenir une liste de commandes avec la commande `{6}help`.*"
+
+helpText: "**{0} {1}** - *Made by {2} with* :heart:\n
+:cd: **Commandes membre :**\n
+:white_small_square: `{3}help` : affiche des commandes selon le statut du membre *(simple, joueur, admin, streamer)*.\n
+:white_small_square: `{3}bracket` : obtenir le lien du bracket en cours.\n
+:white_small_square: `{3}stream` : obtenir le ou les liens de stream du tournoi en cours.\n
+:white_small_square: `{3}desync` : obtenir une notice d'aide en cas de desync sur Dolphin Netplay.\n
+:white_small_square: `{3}buffer` : calcule le minimum buffer optimal pour Dolphin Netplay *(paramètre : ping)*.\n"
+
+challengerHelpText: ":no_entry_sign: **Commandes administrateur :**\n
+:white_small_square: `{0}setup` : initialiser un tournoi *(paramètre : lien challonge valide)*.\n
+:white_small_square: `{0}rm` : désinscrire/retirer (DQ) quelqu'un du tournoi *(paramètre : @mention | liste)*.\n
+:white_small_square: `{0}add` : ajouter quelqu'un au tournoi *(paramètre : @mention | liste)*.\n
+:white_small_square: `{0}start/end` : démarrer/finaliser le tournoi enregistré.\n
+:white_small_square: `{0}set` : changer une préférence *(paramètres : [paramètre] [on/off])*.\n
+:white_small_square: `{0}settings` : afficher les préférences modifiables avec `{0}set`.\n"
+
+adminHelpText: ":no_entry_sign: **Commandes administrateur :**\n
+:white_small_square: `{0}setup` : initialiser un tournoi *(paramètre : lien challonge valide)*.\n
+:white_small_square: `{0}rm` : désinscrire/retirer (DQ) quelqu'un du tournoi *(paramètre : @mention | liste)*.\n
+:white_small_square: `{0}add` : ajouter quelqu'un au tournoi *(paramètre : @mention | liste)*.\n
+:white_small_square: `{0}start/end` : démarrer/finaliser le tournoi enregistré.\n
+:white_small_square: `{0}set` : changer une préférence *(paramètres : [paramètre] [on/off])*.\n
+:white_small_square: `{0}settings` : afficher les préférences modifiables avec `{0}set`.\n"
+
+streamerHelpText: ":tv: **Commandes streamer :**\n
+:white_small_square: `{0}initstream` : initialiser son stream pour le tournoi actuel *(paramètre : lien Twitch)*.\n
+:white_small_square: `{0}stopstream` : arrêter son stream pour le tournoi actuel.\n
+:white_small_square: `{0}mystream` : obtenir les informations relatives au stream (IDs, on stream, queue).\n
+:white_small_square: `{0}setstream` : mettre en place les codes d'accès au stream *(paramètres jeu-dépendant)*.\n
+:white_small_square: `{0}addstream` : ajouter un set à la stream queue *(paramètre : n° | liste de n°)*.\n
+:white_small_square: `{0}rmstream` : retirer un set de la stream queue *(paramètre : n° | liste de n°)*.\n
+:white_small_square: `{0}swapstream` : interchanger deux sets de la stream queue *(paramètres : n°1 | n°2)*.\n"

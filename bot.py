@@ -1669,11 +1669,14 @@ async def on_raw_reaction_remove(event):
 @bot.command(name='help', aliases=['info', 'version'])
 @commands.cooldown(1, 30, type=commands.BucketType.user)
 async def send_help(ctx):
-    await ctx.send(f"**{name} {version}** - *Made by {author} with* :heart:\n{help_text}\n")
+    await ctx.send(strings['helpText'].format(name, version, author, bot_prefix))
     author_roles = [y.id for y in ctx.author.roles]
-    if challenger_id in author_roles: await ctx.send(challenger_help_text) # challenger help
-    if to_id in author_roles or await ctx.bot.is_owner(ctx.author): await ctx.send(admin_help_text) # admin help
-    if streamer_id in author_roles: await ctx.send(streamer_help_text) # streamer help
+    if challenger_id in author_roles:
+        await ctx.send(strings['challengerHelpText'].format(bot_prefix))  # challenger help
+    if to_id in author_roles or await ctx.bot.is_owner(ctx.author):
+        await ctx.send(strings['adminHelpText'].format(bot_prefix))  # admin help
+    if streamer_id in author_roles:
+        await ctx.send(strings['streamerHelpText'].format(bot_prefix))  # streamer help
 
 
 ### Set preference

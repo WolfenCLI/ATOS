@@ -1,56 +1,6 @@
 from utils.get_config import *
 
 ### Texts
-welcome_text=f"""
-Je t'invite à consulter le channel <#{deroulement_channel_id}>, et également <#{inscriptions_channel_id}> si tu souhaites t'inscrire à un tournoi.
-
-N'oublie pas de consulter les <#{annonce_channel_id}> régulièrement, et de poser tes questions aux TOs sur <#{faq_channel_id}>.
-
-Je te conseille de t'attribuer un rôle dans <#{roles_channel_id}> par la même occasion.
-Enfin, amuse-toi bien ! *Tu peux obtenir une liste de commandes avec la commande `{bot_prefix}help`.*
-"""
-
-help_text=f"""
-:cd: **Commandes membre :**
-:white_small_square: `{bot_prefix}help` : affiche des commandes selon le statut du membre *(simple, joueur, admin, streamer)*.
-:white_small_square: `{bot_prefix}bracket` : obtenir le lien du bracket en cours.
-:white_small_square: `{bot_prefix}stream` : obtenir le ou les liens de stream du tournoi en cours.
-:white_small_square: `{bot_prefix}desync` : obtenir une notice d'aide en cas de desync sur Dolphin Netplay.
-:white_small_square: `{bot_prefix}buffer` : calcule le minimum buffer optimal pour Dolphin Netplay *(paramètre : ping)*.
-"""
-
-challenger_help_text=f"""
-:video_game: **Commandes joueur :**
-:white_small_square: `{bot_prefix}dq` : DQ du tournoi après que celui-ci ait commencé.
-:white_small_square: `{bot_prefix}forfeit` : abandonner son match en cours, pour passer de winner à looser.
-:white_small_square: `{bot_prefix}flip` : pile/face simple, fonctionne dans tous les channels.
-:white_small_square: `{bot_prefix}win` : rentrer le score d'un set dans <#{scores_channel_id}> *(paramètre : score)*.
-:white_small_square: `{bot_prefix}stages` : obtenir la stagelist légale actuelle selon le jeu du tournoi actuel.
-:white_small_square: `{bot_prefix}ruleset` : obtenir un lien vers le channel du ruleset du jeu actuel.
-:white_small_square: `{bot_prefix}lag` : ouvrir une procédure de lag, à utiliser avec parcimonie.
-"""
-
-admin_help_text=f"""
-:no_entry_sign: **Commandes administrateur :**
-:white_small_square: `{bot_prefix}setup` : initialiser un tournoi *(paramètre : lien challonge valide)*.
-:white_small_square: `{bot_prefix}rm` : désinscrire/retirer (DQ) quelqu'un du tournoi *(paramètre : @mention | liste)*.
-:white_small_square: `{bot_prefix}add` : ajouter quelqu'un au tournoi *(paramètre : @mention | liste)*.
-:white_small_square: `{bot_prefix}start/end` : démarrer/finaliser le tournoi enregistré.
-:white_small_square: `{bot_prefix}set` : changer une préférence *(paramètres : [paramètre] [on/off])*.
-:white_small_square: `{bot_prefix}settings` : afficher les préférences modifiables avec `{bot_prefix}set`.
-"""
-
-streamer_help_text=f"""
-:tv: **Commandes streamer :**
-:white_small_square: `{bot_prefix}initstream` : initialiser son stream pour le tournoi actuel *(paramètre : lien Twitch)*.
-:white_small_square: `{bot_prefix}stopstream` : arrêter son stream pour le tournoi actuel.
-:white_small_square: `{bot_prefix}mystream` : obtenir les informations relatives au stream (IDs, on stream, queue).
-:white_small_square: `{bot_prefix}setstream` : mettre en place les codes d'accès au stream *(paramètres jeu-dépendant)*.
-:white_small_square: `{bot_prefix}addstream` : ajouter un set à la stream queue *(paramètre : n° | liste de n°)*.
-:white_small_square: `{bot_prefix}rmstream` : retirer un set de la stream queue *(paramètre : n° | liste de n°)*.
-:white_small_square: `{bot_prefix}swapstream` : interchanger deux sets de la stream queue *(paramètres : n°1 | n°2)*.
-"""
-
 lag_text=f"""
 :satellite: **Un lag a été constaté**, les <@&{to_id}> sont contactés.
 
