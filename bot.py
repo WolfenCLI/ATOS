@@ -749,7 +749,7 @@ async def post_bracket(ctx):
 ### Pile/face basique
 @bot.command(name='flip', aliases=['flipcoin', 'coinflip', 'coin'])
 async def flipcoin(ctx):
-    await ctx.send(f"<@{ctx.author.id}> {random.choice(['Tu commences à faire les bans.', 'Ton adversaire commence à faire les bans.'])}")
+    await ctx.send(f"<@{ctx.author.id}> {random.choice([strings['coinFlip1'], strings['coinFlip2']])}")
 
 
 ### Ajout manuel
@@ -817,24 +817,24 @@ async def score_match(ctx, arg):
         )
     except ChallongeException:
         await ctx.message.add_reaction("🕐")
-        await ctx.send(f"<@{ctx.author.id}> Dû à une coupure de Challonge, je n'ai pas pu récupérer les données du set. Merci de retenter dans quelques instants.")
+        await ctx.send(strings['score1'].format(ctx.author.id))
         return
 
     try:
         if match[0]["underway_at"] == None:
             await ctx.message.add_reaction("⚠️")
-            await ctx.send(f"<@{ctx.author.id}> Le set pour lequel tu as donné le score n'a **pas encore commencé** !")
+            await ctx.send(strings['score2'].format(ctx.author.id))
             return
     except IndexError:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> Tu n'as pas de set prévu pour le moment, il n'y a donc pas de score à rentrer.")
+        await ctx.send(strings['score3'].format(ctx.author.id))
         return
 
     try:
         score = re.search(r'([0-9]+) *\- *([0-9]+)', arg).group().replace(" ", "")
     except AttributeError:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> **Ton score ne possède pas le bon format** *(3-0, 2-1, 3-2...)*, merci de le rentrer à nouveau.")
+        await ctx.send(strings['score4'].format(ctx.author.id))
         return
 
     if score[0] < score[2]: score = score[::-1] # Le premier chiffre doit être celui du gagnant
@@ -848,12 +848,12 @@ async def score_match(ctx, arg):
 
     if int(score[0]) != aimed_score or int(score[2]) not in looser_score:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> **Score incorrect**, vérifiez par exemple si le set doit se jouer en BO3 ou BO5.")
+        await ctx.send(strings['score5'].format(ctx.author.id))
         return
 
     if datetime.datetime.now() - debut_set < datetime.timedelta(minutes = temps_min):
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> **Temps écoulé trop court** pour qu'un résultat soit déjà rentré pour le set.")
+        await ctx.send(strings['score6'].format(ctx.author.id))
         return
 
     for joueur in participants:
@@ -878,15 +878,13 @@ async def score_match(ctx, arg):
 
     except ChallongeException:
         await ctx.message.add_reaction("🕐")
-        await ctx.send(f"<@{ctx.author.id}> Dû à une coupure de Challonge, je n'ai pas pu envoyer ton score. Merci de retenter dans quelques instants.")
+        await ctx.send(strings['score7'].format(ctx.author.id))
 
     else:
         gaming_channel = discord.utils.get(ctx.guild.text_channels, name=str(match[0]["suggested_play_order"]))
 
         if gaming_channel != None:
-            await gaming_channel.send(f":bell: __Score rapporté__ : **{participants[ctx.author.id]['display_name']}** gagne **{og_score}** !\n"
-                                      f"*En cas d'erreur, appelez un TO ! Un mauvais score intentionnel est passable de DQ et ban du tournoi.*\n"
-                                      f"*Note : ce channel sera automatiquement supprimé 5 minutes à partir de la dernière activité.*")
+            await gaming_channel.send(strings['score8'].format(participants[ctx.author.id]['display_name'], og_score))
 
 
 ### Clean channels
