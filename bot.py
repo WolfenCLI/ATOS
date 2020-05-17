@@ -77,15 +77,21 @@ async def on_member_join(member):
     ])
 
     try:
-        await member.send(strings['welcomeText'].format(member.guild.name,
-                                                        deroulement_channel_id,
-                                                        inscriptions_channel_id,
-                                                        annonce_channel_id,
-                                                        faq_channel_id,
-                                                        roles_channel_id,
-                                                        bot_prefix))
+        await member.send(strings['welcomeText1'].format(member.guild.name,
+                                                         deroulement_channel_id,
+                                                         inscriptions_channel_id,
+                                                         annonce_channel_id,
+                                                         faq_channel_id,
+                                                         roles_channel_id,
+                                                         bot_prefix))
     except discord.Forbidden:
-        await bot.get_channel(blabla_channel_id).send(f"{message} {welcome_text}")
+        await bot.get_channel(blabla_channel_id).send(strings['welcomeText2'].format(message,
+                                                                                     deroulement_channel_id,
+                                                                                     inscriptions_channel_id,
+                                                                                     annonce_channel_id,
+                                                                                     faq_channel_id,
+                                                                                     roles_channel_id,
+                                                                                     bot_prefix))
     else:
         await bot.get_channel(blabla_channel_id).send(message) # Avoid sending welcome_text to the channel if possible
 
