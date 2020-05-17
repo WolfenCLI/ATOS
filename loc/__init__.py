@@ -4,7 +4,7 @@ import yaml
 def path_from_locale(locale: str) -> str:
     path: str = ""
     if "fr" in locale.lower():
-        path = "french.yml"
+        path = "loc/french.yml"
     if len(path) == 0:
         raise ImportError("Invalid locale code: {}".format(locale))
     return path
