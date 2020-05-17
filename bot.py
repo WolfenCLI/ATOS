@@ -130,19 +130,19 @@ async def init_tournament(url_or_id):
 
     # Checks
     if tournoi['game'] not in gamelist:
-        await bot.get_channel(to_channel_id).send(f":warning: Création du tournoi *{tournoi['game']}* annulée : **jeu introuvable dans la gamelist**.")
+        await bot.get_channel(to_channel_id).send(strings['TournamentCreationWarning1'].format(tournoi['game']))
         return
 
     if not (datetime.datetime.now() < tournoi["début_check-in"] < tournoi["fin_check-in"] < tournoi["fin_inscription"] < tournoi["début_tournoi"]):
-        await bot.get_channel(to_channel_id).send(f":warning: Création du tournoi *{tournoi['game']}* annulée : **conflit des temps de check-in et d'inscriptions**.")
+        await bot.get_channel(to_channel_id).send(strings['TournamentCreationWarning2'].format(tournoi['game']))
         return
 
-    if tournoi['bulk_mode'] == True:
+    if tournoi['bulk_mode']:
         try:
             await get_ranking_csv(tournoi)
         except (KeyError, ValueError):
-            await bot.get_channel(to_channel_id).send(f":warning: Création du tournoi *{tournoi['game']}* annulée : **données de ranking introuvables**.\n"
-                                                      f"*Désactivez le bulk mode avec `{bot_prefix}set bulk_mode off` si vous ne souhaitez pas utiliser de ranking.*")
+            await bot.get_channel(to_channel_id).send(strings['TournamentCreationWarning3'].format(tournoi['game'],
+                                                                                                   bot_prefix))
             return
 
     with open(tournoi_path, 'w') as f: json.dump(tournoi, f, indent=4, default=dateconverter)

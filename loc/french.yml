@@ -91,3 +91,8 @@ d8560b021835c9234c28be7ff9bcaaeb\n
 SD : en haut à droite d'une fenêtre netplay, cliquer sur \"MD5 Check\" et choisir \"SD card\".*\n
 \n
 :three: **Si ces informations ne suffisent pas, contactez un TO.**\n"
+
+TournamentCreationWarning1: ":warning: Création du tournoi *{0}* annulée : **jeu introuvable dans la gamelist**."
+TournamentCreationWarning2: ":warning: Création du tournoi *{0}* annulée : **conflit des temps de check-in et d'inscriptions**."
+TournamentCreationWarning3: ":warning: Création du tournoi *{0}* annulée: **données de ranking introuvables**.\n
+*Désactivez le bulk mode avec `{1}set bulk_mode off` si vous ne souhaitez pas utiliser de ranking.*"
