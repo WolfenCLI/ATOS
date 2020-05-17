@@ -21,9 +21,6 @@ from utils.json_stream import participants, dump_participants
 # Import configuration (variables only)
 from utils.get_config import *
 
-# Import raw texts (variables only)
-from utils.raw_texts import *
-
 # import locale strings
 from loc import strings_import
 strings: dict = strings_import(language)
@@ -1512,7 +1509,7 @@ async def send_lag_text(ctx):
     with open(tournoi_path, 'r+') as f: tournoi = json.load(f, object_hook=dateparser)
     with open(gamelist_path, 'r+') as f: gamelist = yaml.full_load(f)
 
-    msg = lag_text
+    msg = strings['lagText'].format(to_id)
 
     if tournoi['game'] == 'Project+':
         msg += (f"\n{gamelist[tournoi['game']]['icon']} **Spécificités Project+ :**\n"
@@ -1729,7 +1726,7 @@ async def check_settings(ctx):
 @bot.command(name='desync')
 @commands.cooldown(1, 30, type=commands.BucketType.user)
 async def send_desync_help(ctx):
-    await ctx.send(desync_text)
+    await ctx.send(strings['desyncText'])
 
 
 ### On command error : invoker has not enough permissions

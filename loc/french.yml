@@ -53,3 +53,41 @@ streamerHelpText: ":tv: **Commandes streamer :**\n
 :white_small_square: `{0}addstream` : ajouter un set à la stream queue *(paramètre : n° | liste de n°)*.\n
 :white_small_square: `{0}rmstream` : retirer un set de la stream queue *(paramètre : n° | liste de n°)*.\n
 :white_small_square: `{0}swapstream` : interchanger deux sets de la stream queue *(paramètres : n°1 | n°2)*.\n"
+
+lagText: ":satellite: **Un lag a été constaté**, les <@&{0}> sont contactés.\n
+\n
+:one: En attendant, chaque joueur peut:\n
+:white_small_square: Vérifier qu'aucune autre connexion locale ne pompe la connexion.\n
+:white_small_square: S'assurer que la connexion au réseau est, si possible, câblée.\n
+:white_small_square: S'assurer qu'il/elle n'emploie pas un partage de connexion de réseau mobile (passable de DQ).\n
+\n
+:two: Si malgré ces vérifications la connexion n'est pas toujours pas satisfaisante, chaque joueur doit:\n
+:white_small_square: Préparer un test de connexion *(Switch pour Ultimate, Speedtest pour Project+)*.\n
+:white_small_square: Décrire sa méthode de connexion actuelle *(Wi-Fi, Ethernet direct, CPL -> ADSL, FFTH, 4G...)*.\n
+\n
+:three: Si nécessaire, un TO s'occupera de votre cas et proposera une arène avec le/les joueur(s) problématique(s).\n"
+
+desyncText: ":one: **Détecter une desync sur Project+ (Dolphin Netplay) :**\n
+:white_small_square: Une desync résulte dans des inputs transmis au mauvais moment (l'adversaire SD à répétition, etc.).\n
+:white_small_square: Si Dolphin affiche qu'une desync a été détectée, c'est probablement le cas.\n
+\n
+:two: **Résoudre une desync, les 2 joueurs : **\n
+:white_small_square: Peuvent avoir recours à une __personne de tierce partie__ pour déterminer le fautif.\n
+:white_small_square: S'assurent qu'ils ont bien installé **la dernière version en date** de Project+.\n
+:white_small_square: Vérifient depuis la fenêtre netplay que leur carte SD virtuelle a un hash MD5 égal à :\n
+```\n
+9b1bf61cf106b70ecbc81c1e70aed0f7\n
+```\n
+:white_small_square: Doivent vérifier que leur __ISO possède un hash MD5 inclus__ dans la liste compatible :\n
+```\n
+d18726e6dfdc8bdbdad540b561051087\n
+d8560b021835c9234c28be7ff9bcaaeb\n
+5052e2e15f22772ab6ce4fd078221e96\n
+52ce7160ced2505ad5e397477d0ea4fe\n
+9f677c78eacb7e9b8617ab358082be32\n
+1c4d6175e3cbb2614bd805d32aea7311\n
+```\n
+*ISO : clic droit sur \"Super Smash Bros Brawl\" > Onglet \"Info\" > Ligne \"MD5 Checksum\".\n
+SD : en haut à droite d'une fenêtre netplay, cliquer sur \"MD5 Check\" et choisir \"SD card\".*\n
+\n
+:three: **Si ces informations ne suffisent pas, contactez un TO.**\n"
