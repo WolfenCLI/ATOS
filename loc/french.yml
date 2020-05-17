@@ -1,0 +1,17 @@
+welcome1: "<@{0}> joins the battle!"
+
+welcome2: "Bienvenue à toi sur le serveur {0}, <@{1}>."
+
+welcome3: "Un <@{0}> sauvage apparaît !"
+
+welcome4: "Le serveur {0} accueille un nouveau membre :  <@{1}> !"
+
+welcomeText: "Bienvenue sur le serveur **{0}** ! \n
+Je t'invite à consulter le channel <#{1}>, et également <#{2}> si tu souhaites t'inscrire à un tournoi.\n
+\n
+N'oublie pas de consulter les <#{3}> régulièrement, et de poser tes questions aux TOs sur <#{4}>.\n
+\n
+Je te conseille de t'attribuer un rôle dans <#{5}> par la même occasion.\n
+Enfin, amuse-toi bien ! *Tu peux obtenir une liste de commandes avec la commande `{6}help`.*"
+
+
