@@ -426,17 +426,20 @@ async def annonce_inscription():
     with open(tournoi_path, 'r+') as f: tournoi = json.load(f, object_hook=dateparser)
     with open(gamelist_path, 'r+') as f: gamelist = yaml.full_load(f)
 
-    annonce = (
-        f"{server_logo} **{tournoi['name']}** - {gamelist[tournoi['game']]['icon']} *{tournoi['game']}*\n"
-        f":white_small_square: __Date__ : {format_date(tournoi['début_tournoi'], format='full', locale=language)} à {format_time(tournoi['début_tournoi'], format='short', locale=language)}\n"
-        f":white_small_square: __Check-in__ : de {format_time(tournoi['début_check-in'], format='short', locale=language)} à {format_time(tournoi['fin_check-in'], format='short', locale=language)} "
-        f"(fermeture des inscriptions à {format_time(tournoi['fin_inscription'], format='short', locale=language)})\n"
-        f":white_small_square: __Limite__ : 0/{str(tournoi['limite'])} joueurs *(mise à jour en temps réel)*\n"
-        f":white_small_square: __Bracket__ : {tournoi['url'] if not tournoi['bulk_mode'] else 'disponible peu de temps avant le début du tournoi'}\n"
-        f":white_small_square: __Format__ : singles, double élimination (ruleset : <#{gamelist[tournoi['game']]['ruleset']}>)\n\n"
-        f"Vous pouvez vous inscrire/désinscrire {'en ajoutant/retirant la réaction ✅ à ce message' if tournoi['reaction_mode'] else f'avec les commandes `{bot_prefix}in`/`{bot_prefix}out`'}.\n"
-        f"*Note : votre **pseudonyme {'sur ce serveur' if tournoi['use_guild_name'] else 'Discord général'}** au moment de l'inscription sera celui utilisé dans le bracket.*"
-    )
+    annonce = strings['inscriptionAnnouncement'].format(server_logo,
+                                 tournoi['name'],
+                                 gamelist[tournoi['game']]['icon'],
+                                 tournoi['game'],
+                                 format_date(tournoi['début_tournoi'], format='full', locale=language),
+                                 format_time(tournoi['début_tournoi'], format='short', locale=language),
+                                 format_time(tournoi['début_check-in'], format='short', locale=language),
+                                 format_time(tournoi['fin_check-in'], format='short', locale=language),
+                                 format_time(tournoi['fin_inscription'], format='short', locale=language),
+                                 str(tournoi['limite']),
+                                 tournoi['url'] if not tournoi['bulk_mode'] else strings['subInscriptionAnnouncement1'],
+                                 gamelist[tournoi['game']]['ruleset'],
+                                 strings['subInscriptionAnnouncement2'] if tournoi['reaction_mode'] else strings['subInscriptionAnnouncement3'].format(bot_prefix),
+                                 strings['subInscriptionAnnouncement4'] if tournoi['use_guild_name'] else strings['subInscriptionAnnouncement5'])
 
     inscriptions_channel = bot.get_channel(inscriptions_channel_id)
     inscriptions_role = inscriptions_channel.guild.get_role(gamelist[tournoi['game']]['role']) if tournoi["restrict_to_role"] else inscriptions_channel.guild.default_role
@@ -458,8 +461,12 @@ async def annonce_inscription():
 
     await annonce_msg.pin()
 
-    await bot.get_channel(annonce_channel_id).send(f"{server_logo} Inscriptions pour le **{tournoi['name']}** ouvertes dans <#{inscriptions_channel_id}> ! Consultez-y les messages épinglés. <@&{gamelist[tournoi['game']]['role']}>\n"
-                                                   f":calendar_spiral: Ce tournoi aura lieu le **{format_date(tournoi['début_tournoi'], format='full', locale=language)} à {format_time(tournoi['début_tournoi'], format='short', locale=language)}**.")
+    await bot.get_channel(annonce_channel_id).send(strings['InscriptionAnnouncementEnd'].format(server_logo,
+                                                                                                tournoi['name'],
+                                                                                                inscriptions_channel_id,
+                                                                                                gamelist[tournoi['game']]['role'],
+                                                                                                format_date(tournoi['début_tournoi'], format='full', locale=language),
+                                                                                                format_time(tournoi['début_tournoi'], format='short', locale=language)))
 
 
 ### Inscription

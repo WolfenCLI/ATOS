@@ -144,3 +144,26 @@ tournamentAnnouncmentElse: ":five: Les **BO5** commenceront en **top 8**."
 tournamentAnnouncmentLast: "\n\n*L'équipe de TO et moi-même vous souhaitons un excellent tournoi !*"
 
 tournamentEnd: "{0} Le tournoi **{1}** est terminé, merci à toutes et à tous d'avoir participé ! J'espère vous revoir bientôt."
+
+inscriptionAnnouncement: "{0} **{1}** - {2} *{3}*\n
+:white_small_square: __Date__: {4} à {5}\n
+:white_small_square: __Check-in__: de {6} à {7}
+(fermeture des inscriptions à {8})\n
+:white_small_square: __Limite__: 0/{9} joueurs *(mise à jour en temps réel)*\n
+:white_small_square: __Bracket__: {10}\n
+:white_small_square: __Format__: singles, double élimination (ruleset: <#{11}>)\n\n
+Vous pouvez vous inscrire/désinscrire {12}.\n
+*Note: votre **pseudonyme {13}** au moment de l'inscription sera celui utilisé dans le bracket.*"
+
+subInscriptionAnnouncement1: "disponible peu de temps avant le début du tournoi"
+
+subInscriptionAnnouncement2: "en ajoutant/retirant la réaction ✅ à ce message"
+
+subInscriptionAnnouncement3: "avec les commandes `{0}in`/`{0}out`"
+
+subInscriptionAnnouncement4: "sur ce serveur"
+
+subInscriptionAnnouncement5: "Discord général"
+
+InscriptionAnnouncementEnd: "{0} Inscriptions pour le **{1}** ouvertes dans <#{2}> ! Consultez-y les messages épinglés. <@&{3}>\n
+:calendar_spiral: Ce tournoi aura lieu le **{4} à {5}**."
