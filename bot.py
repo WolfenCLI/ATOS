@@ -24,6 +24,10 @@ from utils.get_config import *
 # Import raw texts (variables only)
 from utils.raw_texts import *
 
+# import locale strings
+from loc import strings_import
+strings: dict = strings_import(language)
+
 log = logging.getLogger("atos")
 
 #### Infos
@@ -66,14 +70,20 @@ async def on_member_join(member):
     if greet_new_members == False: return
 
     message = random.choice([
-        f"<@{member.id}> joins the battle!",
-        f"Bienvenue à toi sur le serveur {member.guild.name}, <@{member.id}>.",
-        f"Un <@{member.id}> sauvage apparaît !",
-        f"Le serveur {member.guild.name} accueille un nouveau membre :  <@{member.id}> !"
+        strings['welcome1'].format(member.id),
+        strings['welcome2'].format(member.guild.name, member.id),
+        strings['welcome3'].format(member.id),
+        strings['welcome4'].format(member.guild.name, member.id)
     ])
 
     try:
-        await member.send(f"Bienvenue sur le serveur **{member.guild.name}** ! {welcome_text}")
+        await member.send(strings['welcomeText'].format(member.guild.name,
+                                                        deroulement_channel_id,
+                                                        inscriptions_channel_id,
+                                                        annonce_channel_id,
+                                                        faq_channel_id,
+                                                        roles_channel_id,
+                                                        bot_prefix))
     except discord.Forbidden:
         await bot.get_channel(blabla_channel_id).send(f"{message} {welcome_text}")
     else:
@@ -202,7 +212,7 @@ async def auto_setup_tournament():
                 relative = dateutil.relativedelta.relativedelta(day = day) # It's a monthly
             except ValueError:
                 return # Neither?
- 
+
             next_date = (datetime.datetime.now().astimezone() + relative).replace(
                 hour = dateutil.parser.parse(tournaments[tournament]["start"]).hour,
                 minute = dateutil.parser.parse(tournaments[tournament]["start"]).minute,
@@ -297,7 +307,7 @@ async def start_tournament(ctx):
     tournoi_annonce += (f"\n\n:fire: Le **top 8** commencera, d'après le bracket :\n"
                         f":white_small_square: En **{nom_round(tournoi['round_winner_top8'])}**\n"
                         f":white_small_square: En **{nom_round(tournoi['round_looser_top8'])}**\n\n")
-    
+
     if tournoi["full_bo3"]:
         tournoi_annonce += ":three: L'intégralité du tournoi se déroulera en **BO3**."
     elif tournoi["full_bo5"]:
@@ -335,7 +345,7 @@ async def end_tournament(ctx):
         scheduler.remove_job('underway_tournament')
     except JobLookupError:
         pass
-    
+
     # Annoucements (including results)
     await annonce_resultats()
     await bot.get_channel(annonce_channel_id).send(
@@ -391,7 +401,7 @@ async def reload_tournament():
 
     # Prendre les inscriptions manquées
     if datetime.datetime.now() < tournoi["fin_inscription"]:
-        
+
         if tournoi["reaction_mode"]:
             annonce = await bot.get_channel(inscriptions_channel_id).fetch_message(tournoi["annonce_id"])
 
@@ -415,7 +425,7 @@ async def reload_tournament():
             for inscrit in participants:
                 if inscrit not in id_list:
                     await desinscrire(annonce.guild.get_member(inscrit))
-        
+
         else:
             async for message in bot.get_channel(inscriptions_channel_id).history(oldest_first=True):
                 if message.author == bot.user or message.reactions != []:
@@ -443,7 +453,7 @@ async def annonce_inscription():
         f"Vous pouvez vous inscrire/désinscrire {'en ajoutant/retirant la réaction ✅ à ce message' if tournoi['reaction_mode'] else f'avec les commandes `{bot_prefix}in`/`{bot_prefix}out`'}.\n"
         f"*Note : votre **pseudonyme {'sur ce serveur' if tournoi['use_guild_name'] else 'Discord général'}** au moment de l'inscription sera celui utilisé dans le bracket.*"
     )
-    
+
     inscriptions_channel = bot.get_channel(inscriptions_channel_id)
     inscriptions_role = inscriptions_channel.guild.get_role(gamelist[tournoi['game']]['role']) if tournoi["restrict_to_role"] else inscriptions_channel.guild.default_role
 
@@ -461,7 +471,7 @@ async def annonce_inscription():
 
     if tournoi['reaction_mode']:
         await annonce_msg.add_reaction("✅")
-    
+
     await annonce_msg.pin()
 
     await bot.get_channel(annonce_channel_id).send(f"{server_logo} Inscriptions pour le **{tournoi['name']}** ouvertes dans <#{inscriptions_channel_id}> ! Consultez-y les messages épinglés. <@&{gamelist[tournoi['game']]['role']}>\n"
@@ -1131,7 +1141,7 @@ async def post_stream(ctx):
 
     if len(stream) == 0:
         await ctx.send(f"<@{ctx.author.id}> Il n'y a pas de stream en cours (ou prévu) pour ce tournoi à l'heure actuelle.")
-    
+
     elif len(stream) == 1:
         await ctx.send(f"<@{ctx.author.id}> https://www.twitch.tv/{stream[next(iter(stream))]['channel']}")
 
@@ -1437,7 +1447,7 @@ async def rappel_matches(guild, bracket):
 
                         try:
                             winner
-                        except NameError: # S'il n'y a jamais eu de résultat, aucun joueur n'a donc été actif : DQ des deux 
+                        except NameError: # S'il n'y a jamais eu de résultat, aucun joueur n'a donc été actif : DQ des deux
                             await gaming_channel.send(f"<@&{to_id}> **DQ automatique des __2 joueurs__ pour inactivité : <@{player1.id}> & <@{player2.id}>**")
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[player1.id]['challonge'])
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[player2.id]['challonge'])
@@ -1549,7 +1559,7 @@ async def annonce_resultats():
         "Félicitations à eux. N'oubliez pas que la clé est la persévérance ! Croyez toujours en vous.",
         "Ce fut un plaisir en tant que bot d'aider à la gestion de ce tournoi et d'assister à vos merveileux sets."
     ])
-    
+
     classement = (f"{server_logo} **__Résultats du tournoi {tournoi['name']}__**\n\n"
                   f":trophy: **1er** : **{resultats[0][1]}**\n"
                   f":second_place: **2e** : {resultats[1][1]}\n"
@@ -1561,7 +1571,7 @@ async def annonce_resultats():
                   f"{gamelist[tournoi['game']]['icon']} {tournoi['game']}\n"
                   f":link: **Bracket :** {tournoi['url']}\n\n"
                   f"{ending}")
-    
+
     await bot.get_channel(resultats_channel_id).send(classement)
 
 
@@ -1669,7 +1679,7 @@ async def set_preference(ctx, arg1, arg2):
     try:
         if isinstance(preferences[arg1.lower()], bool):
             if arg2.lower() in ["true", "on"]:
-                preferences[arg1.lower()] = True 
+                preferences[arg1.lower()] = True
             elif arg2.lower() in ["false", "off"]:
                 preferences[arg1.lower()] = False
             else:
