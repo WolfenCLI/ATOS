@@ -195,3 +195,7 @@ endCheckin1: ":clock1: **Le check-in est terminé :**\n
 :white_small_square: Rappel : une inscription après le début du check-in ne néccessite pas de check-in."
 
 endCheckin2: ":information_source: **Les absents du check-in ont été retirés** : des places sont peut-être libérées pour des inscriptions de dernière minute.\n"
+
+endInscription1: ":clock1: **Les inscriptions sont fermées :** le bracket est désormais en cours de finalisation."
+
+endInscription2: "Tu as été check-in avec succès. Tu n'as plus qu'à patienter jusqu'au début du tournoi !"
