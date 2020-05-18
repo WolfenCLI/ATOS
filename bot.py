@@ -1526,7 +1526,9 @@ async def annonce_resultats():
     participants, resultats = await async_http_retry(achallonge.participants.index, tournoi["id"]), []
 
     if len(participants) < 8:
-        await bot.get_channel(resultats_channel_id).send(f"{server_logo} Résultats du **{tournoi['name']}** : {tournoi['url']}")
+        await bot.get_channel(resultats_channel_id).send(strings['resultsAnnouncement'].format(server_logo,
+                                                                                               tournoi['name'],
+                                                                                               tournoi['url']))
         return
 
     for joueur in participants:
@@ -1537,23 +1539,17 @@ async def annonce_resultats():
     top8 = ' / '.join([y for x, y in resultats if x == 7])
 
     ending = random.choice([
-        "Bien joué à tous ! Quant aux autres : ne perdez pas espoir, ce sera votre tour un jour...",
-        "Merci à tous d'avoir participé, on se remet ça très bientôt ! Prenez soin de vous.",
-        "Félicitations à eux. N'oubliez pas que la clé est la persévérance ! Croyez toujours en vous.",
-        "Ce fut un plaisir en tant que bot d'aider à la gestion de ce tournoi et d'assister à vos merveileux sets."
+        strings['resultsAnnouncementEnding1'],
+        strings['resultsAnnouncementEnding2'],
+        strings['resultsAnnouncementEnding3'],
+        strings['resultsAnnouncementEnding4']
     ])
 
-    classement = (f"{server_logo} **__Résultats du tournoi {tournoi['name']}__**\n\n"
-                  f":trophy: **1er** : **{resultats[0][1]}**\n"
-                  f":second_place: **2e** : {resultats[1][1]}\n"
-                  f":third_place: **3e** : {resultats[2][1]}\n"
-                  f":medal: **4e** : {resultats[3][1]}\n"
-                  f":reminder_ribbon: **5e** : {top6}\n"
-                  f":reminder_ribbon: **7e** : {top8}\n\n"
-                  f":bar_chart: {len(participants)} entrants\n"
-                  f"{gamelist[tournoi['game']]['icon']} {tournoi['game']}\n"
-                  f":link: **Bracket :** {tournoi['url']}\n\n"
-                  f"{ending}")
+    classement = strings['resultsAnnouncementPlacings'].format(server_logo, tournoi['name'], resultats[0][1],
+                                                               resultats[1][1], resultats[2][1],
+                                                               resultats[3][1], top6, top8,
+                                                               len(participants), gamelist[tournoi['game']]['icon'],
+                                                               tournoi['game'], tournoi['url'], ending)
 
     await bot.get_channel(resultats_channel_id).send(classement)
 

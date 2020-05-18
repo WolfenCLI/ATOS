@@ -287,3 +287,20 @@ lagText3: ":satellite: **Lag reporté** : les TOs sont invités à consulter le 
 
 calculateBuffer: "<@{0}> Minimum buffer (host) suggéré pour Dolphin Netplay : **{1}**.\n
 *Si du lag persiste, il y a un problème de performance: montez le buffer tant que nécessaire.*"
+
+resultsAnnouncement: "{0} Résultats du **{1}** : {2}"
+resultsAnnouncementEnding1: "Bien joué à tous ! Quant aux autres : ne perdez pas espoir, ce sera votre tour un jour..."
+resultsAnnouncementEnding2: "Merci à tous d'avoir participé, on se remet ça très bientôt ! Prenez soin de vous."
+resultsAnnouncementEnding3: "Félicitations à eux. N'oubliez pas que la clé est la persévérance ! Croyez toujours en vous."
+resultsAnnouncementEnding4: "Ce fut un plaisir en tant que bot d'aider à la gestion de ce tournoi et d'assister à vos merveileux sets."
+resultsAnnouncementPlacings: "{0} **__Résultats du tournoi {1}__**\n\n
+  :trophy: **1er**: **{2}**\n
+  :second_place: **2e**: {3}\n
+  :third_place: **3e**: {4}\n
+  :medal: **4e**: {5}\n
+  :reminder_ribbon: **5e**: {6}\n
+  :reminder_ribbon: **7e**: {7}\n\n
+  :bar_chart: {8} entrants\n
+  {9} {10}\n
+  :link: **Bracket :** {11}\n\n
+  {12}"
