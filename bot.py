@@ -1592,7 +1592,7 @@ async def retirer_role(event):
 
             try:
                 await member.remove_roles(role)
-                await member.send(f"Le rôle **{role.name}** t'a été retiré avec succès : tu ne recevras plus les informations concernant les tournois *{game}*.")
+                await member.send(strings['roleRemove1'].format(role.name, game))
             except (discord.HTTPException, discord.Forbidden):
                 pass
 
@@ -1601,7 +1601,7 @@ async def retirer_role(event):
 
             try:
                 await member.remove_roles(role)
-                await member.send(f"Le rôle **{role.name}** t'a été retiré avec succès : tu ne seras plus contacté si un joueur cherche des combats sur *{game}*.")
+                await member.send(strings['roleRemove2'].format(role.name, game))
             except (discord.HTTPException, discord.Forbidden):
                 pass
 
