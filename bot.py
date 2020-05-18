@@ -1320,16 +1320,19 @@ async def call_stream(guild, bracket):
         gaming_channel = discord.utils.get(guild.text_channels, name=str(match["suggested_play_order"]))
 
         if gaming_channel == None:
-            dm_msg = f"C'est ton tour de passer on stream ! Voici les codes d'accès :\n{get_access_stream(stream[streamer]['access'])}"
+            dm_msg = strings['callStreamDM1'].format(get_access_stream(stream[streamer]['access']))
             await player1.send(dm_msg)
             await player2.send(dm_msg)
         else:
-            await gaming_channel.send(f"<@{player1.id}> <@{player2.id}>\n" # ping them
-                                      f":clapper: Vous pouvez passer on stream sur la chaîne **{stream[streamer]['channel']}** ! "
-                                      f"Voici les codes d'accès :\n{get_access_stream(stream[streamer]['access'])}")
+            await gaming_channel.send(strings['callStream'].format(player1.id,
+                                                                   player2.id,
+                                                                   stream[streamer]['channel'],
+                                                                   get_access_stream(stream[streamer]['access'])))
 
-        await bot.get_channel(stream_channel_id).send(f":arrow_forward: Envoi on stream du set n°{match['suggested_play_order']} chez **{stream[streamer]['channel']}** : "
-                                                      f"**{participants[player1.id]['display_name']}** vs **{participants[player2.id]['display_name']}** !")
+        await bot.get_channel(stream_channel_id).send(strings['callStream2'].format(match['suggested_play_order'],
+                                                                                    stream[streamer]['channel'],
+                                                                                    participants[player1.id]['display_name'],
+                                                                                    participants[player2.id]['display_name']))
 
         stream[streamer]["on_stream"] = match["suggested_play_order"]
 

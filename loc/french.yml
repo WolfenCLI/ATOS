@@ -249,3 +249,10 @@ listStream3: ":stop_button: Aucun set on stream à l'heure actuelle.\n"
 listStream4: ":arrow_forward: **Set on stream actuel** *({0})* : **{1}** vs **{2}**\n"
 listStream5: ":play_pause: Liste des sets prévus pour passer on stream :\n{0}"
 listStream6: ":play_pause: Il n'y a aucun set prévu pour passer on stream."
+
+callStreamDM1: "C'est ton tour de passer on stream ! Voici les codes d'accès :\n{0}"
+callStream: "<@{0}> <@{1}>\n
+  :clapper: Vous pouvez passer on stream sur la chaîne **{2}** ! Voici les codes d'accès :\n
+  {3}"
+callStream2: ":arrow_forward: Envoi on stream du set n°{0} chez **{1}** :
+ **{2}** vs **{3}** !"
