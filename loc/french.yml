@@ -270,3 +270,5 @@ repelMathces4: ":information_source: Le set du channel <#{0}> prend anormalement
 
 getStageList: ":map: **Stages légaux pour {0} :**\n:white_small_square: __Starters__ :\n"
 getStageListMsg: ":white_small_square: __Counterpicks__ :\n"
+
+getRuleset: "<@{0}> Le ruleset est disponible ici : <#{1}>"
