@@ -1084,16 +1084,16 @@ async def check_channel_activity(channel, player1, player2):
         return
 
     if player1_is_active == False:
-        await channel.send(f":timer: **DQ automatique de <@{player1.id}> pour inactivité** : aucune manifestation à temps du joueur.")
+        await channel.send(strings['channelActivity'].format(player1.id))
         await desinscrire(player1)
-        await bot.get_channel(to_channel_id).send(f":information_source: **DQ automatique** de <@{player1.id}> pour inactivité, set n°{channel.name}.")
-        await player1.send("Désolé, tu as été DQ automatiquement car tu n'as pas été actif sur ton channel de set dans les premières minutes qui ont suivi son lancement.")
+        await bot.get_channel(to_channel_id).send(strings['channelActivity2'].format(player1.id, channel.name))
+        await player1.send(strings['channelActivity3'])
 
     if player2_is_active == False:
-        await channel.send(f":timer: **DQ automatique de <@{player2.id}> pour inactivité** : aucune manifestation à temps du joueur.")
+        await channel.send(strings['channelActivity'].format(player2.id))
         await desinscrire(player2)
-        await bot.get_channel(to_channel_id).send(f":information_source: **DQ automatique** de <@{player2.id}> pour inactivité, set n°{channel.name}.")
-        await player2.send("Désolé, tu as été DQ automatiquement car tu n'as pas été actif sur ton channel de set dans les premières minutes qui ont suivi son lancement.")
+        await bot.get_channel(to_channel_id).send(strings['channelActivity2'].format(player2.id, channel.name))
+        await player2.send(strings['channelActivity3'])
 
 
 @bot.command(name='initstream', aliases=['is'])
