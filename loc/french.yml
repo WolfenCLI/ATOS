@@ -284,3 +284,6 @@ lagText2: "\n{0} **Spécificités Project+ :**\n
 :white_small_square: Utilisez la commande `{1}desync` en cas de desync suspectée."
 
 lagText3: ":satellite: **Lag reporté** : les TOs sont invités à consulter le channel <#{0}>"
+
+calculateBuffer: "<@{0}> Minimum buffer (host) suggéré pour Dolphin Netplay : **{1}**.\n
+*Si du lag persiste, il y a un problème de performance: montez le buffer tant que nécessaire.*"

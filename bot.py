@@ -1514,8 +1514,7 @@ async def calculate_buffer(ctx, arg: int):
     theoretical_buffer = arg // 8 + (arg % 8 > 0)
     suggested_buffer = theoretical_buffer if theoretical_buffer >= 4 else 4
 
-    await ctx.send(f"<@{ctx.author.id}> Minimum buffer (host) suggéré pour Dolphin Netplay : **{suggested_buffer}**.\n"
-                   f"*Si du lag persiste, il y a un problème de performance : montez le buffer tant que nécessaire.*")
+    await ctx.send(strings['calculateBuffer'].format(ctx.author.id, suggested_buffer))
 
 
 ### Annoncer les résultats
