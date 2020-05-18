@@ -1414,12 +1414,9 @@ async def rappel_matches(guild, bracket):
                         tournoi["warned"].append(match["suggested_play_order"])
                         with open(tournoi_path, 'w') as f: json.dump(tournoi, f, indent=4, default=dateconverter)
 
-                        alerte = (f":timer: **Ce set n'a toujours pas reçu de score !** <@{player1.id}> <@{player2.id}>\n"
-                                  f":white_small_square: Le gagnant du set est prié de le poster dans <#{scores_channel_id}> dès que possible.\n"
-                                  f":white_small_square: Dans une dizaine de minutes, les TOs seront alertés qu'une décision doit être prise.\n"
-                                  f":white_small_square: Si une personne est détectée comme inactive, elle sera **DQ automatiquement** du tournoi.\n")
-
-                        await gaming_channel.send(alerte)
+                        await gaming_channel.send(strings['repelMatchesAlert'].format(player1.id,
+                                                                                      player2.id,
+                                                                                      scores_channel_id))
 
                     # DQ pour inactivité (exceptionnel...) -> fixé à 10 minutes après l'avertissement
                     elif (match["suggested_play_order"] not in tournoi["timeout"]) and (datetime.datetime.now() - debut_set > datetime.timedelta(minutes = seuil + 10)):
@@ -1443,7 +1440,7 @@ async def rappel_matches(guild, bracket):
                         try:
                             winner
                         except NameError: # S'il n'y a jamais eu de résultat, aucun joueur n'a donc été actif : DQ des deux
-                            await gaming_channel.send(f"<@&{to_id}> **DQ automatique des __2 joueurs__ pour inactivité : <@{player1.id}> & <@{player2.id}>**")
+                            await gaming_channel.send(strings['repelMathces'].format(to_id, player1.id, player2.id))
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[player1.id]['challonge'])
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[player2.id]['challonge'])
                             continue
@@ -1452,18 +1449,18 @@ async def rappel_matches(guild, bracket):
                             looser
                         except NameError: # S'il n'y a pas eu de résultat pour un second joueur différent : DQ de l'inactif
                             looser = player2 if winner.id == player1.id else player1
-                            await gaming_channel.send(f"<@&{to_id}> **DQ automatique de <@{looser.id}> pour inactivité.**")
+                            await gaming_channel.send(strings['repelMathcesLoser'].format(to_id, looser.id))
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[looser.id]['challonge'])
                             continue
 
                         if winner_last_activity - looser_last_activity > datetime.timedelta(minutes = 10): # Si différence d'inactivité de plus de 10 minutes
-                            await gaming_channel.send(f"<@&{to_id}> **Une DQ automatique a été executée pour inactivité :**\n-<@{winner.id}> passe au round suivant.\n-<@{looser.id}> est DQ du tournoi.")
+                            await gaming_channel.send(strings['repelMathces2'].format(to_id, winner.id, looser.id))
                             await async_http_retry(achallonge.participants.destroy, tournoi["id"], participants[looser.id]['challonge'])
 
                         else: # Si pas de différence notable, demander une décision manuelle
-                            await gaming_channel.send(f"<@&{to_id}> **Durée anormalement longue détectée** pour ce set, une décision d'un TO doit être prise")
+                            await gaming_channel.send(strings['repelMathces3'].format(to_id))
 
-                        await bot.get_channel(to_channel_id).send(f":information_source: Le set du channel <#{gaming_channel.id}> prend anormalement du temps, une intervention est peut-être nécessaire.")
+                        await bot.get_channel(to_channel_id).send(strings['repelMathces4'].format(gaming_channel.id))
 
 
 ### Obtenir stagelist

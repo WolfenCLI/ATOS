@@ -256,3 +256,14 @@ callStream: "<@{0}> <@{1}>\n
   {3}"
 callStream2: ":arrow_forward: Envoi on stream du set n°{0} chez **{1}** :
  **{2}** vs **{3}** !"
+
+repelMatchesAlert: ":timer: **Ce set n'a toujours pas reçu de score !** <@{0}> <@{1}>\n
+:white_small_square: Le gagnant du set est prié de le poster dans <#{2}> dès que possible.\n
+:white_small_square: Dans une dizaine de minutes, les TOs seront alertés qu'une décision doit être prise.\n
+:white_small_square: Si une personne est détectée comme inactive, elle sera **DQ automatiquement** du tournoi.\n"
+
+repelMathces: "<@&{0}> **DQ automatique des __2 joueurs__ pour inactivité : <@{1}> & <@{2}>**"
+repelMathcesLoser: "<@&{0}> **DQ automatique de <@{1}> pour inactivité.**"
+repelMathces2: "<@&{0}> **Une DQ automatique a été executée pour inactivité :**\n-<@{1}> passe au round suivant.\n-<@{2}> est DQ du tournoi."
+repelMathces3: "<@&{0}> **Durée anormalement longue détectée** pour ce set, une décision d'un TO doit être prise"
+repelMathces4: ":information_source: Le set du channel <#{0}> prend anormalement du temps, une intervention est peut-être nécessaire."
