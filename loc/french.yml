@@ -310,3 +310,7 @@ rolePick2: "Le rôle **{0}** t'a été attribué avec succès : tu seras contact
 
 roleRemove1: "Le rôle **{0}** t'a été retiré avec succès : tu ne recevras plus les informations concernant les tournois *{1}*."
 roleRemove2: "Le rôle **{0}** t'a été retiré avec succès : tu ne seras plus contacté si un joueur cherche des combats sur *{1}*."
+
+preferences1: "<@{0}> **Paramètre inconnu :** `{1}`."
+preferences2: "<@{0}> **Valeur incorrecte :** `{1}`."
+preferences3: "<@{0}> **Paramètre changé :** `{1} = {2}`."

@@ -1671,16 +1671,16 @@ async def set_preference(ctx, arg1, arg2):
 
     except KeyError:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> **Paramètre inconnu :** `{arg1}`.")
+        await ctx.send(strings['preferences1'].format(ctx.author.id, arg1))
 
     except ValueError:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> **Valeur incorrecte :** `{arg2}`.")
+        await ctx.send(strings['preferences2'].format(ctx.author.id, arg2))
 
     else:
         with open(preferences_path, 'w') as f: yaml.dump(preferences, f)
         await ctx.message.add_reaction("✅")
-        await ctx.send(f"<@{ctx.author.id}> **Paramètre changé :** `{arg1} = {arg2}`.")
+        await ctx.send(strings['preferences3'].format(ctx.author.id, arg1, arg2))
 
 
 ### See preferences
