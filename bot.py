@@ -1501,17 +1501,9 @@ async def send_lag_text(ctx):
     msg = strings['lagText'].format(to_id)
 
     if tournoi['game'] == 'Project+':
-        msg += (f"\n{gamelist[tournoi['game']]['icon']} **Spécificités Project+ :**\n"
-                f":white_small_square: Vérifier que le PC fait tourner le jeu de __manière fluide (60 FPS constants)__, sinon :\n"
-                f"- Baisser la résolution interne dans les paramètres graphiques.\n"
-                f"- Désactiver les textures HD, l'anti-aliasing, s'ils ont été activés.\n"
-                f"- Windows seulement : changer le backend pour *Direct3D9* (le + fluide) ou *Direct3D11* (+ précis que D9)\n"
-                f":white_small_square: Vérifier que la connexion est __stable et suffisamment rapide__ :\n"
-                f"- Le host peut augmenter le \"minimum buffer\" de 6 à 8 : utilisez la commande `{bot_prefix}buffer` en fournissant votre ping.\n"
-                f"- Suivre les étapes génériques contre le lag, citées ci-dessus.\n"
-                f":white_small_square: Utilisez la commande `{bot_prefix}desync` en cas de desync suspectée.")
+        msg += strings['lagText2'].format(gamelist[tournoi['game']]['icon'], bot_prefix)
 
-    await bot.get_channel(to_channel_id).send(f":satellite: **Lag reporté** : les TOs sont invités à consulter le channel <#{ctx.channel.id}>")
+    await bot.get_channel(to_channel_id).send(strings['lagText3'].format(ctx.channel.id))
     await ctx.send(msg)
 
 
