@@ -1183,7 +1183,7 @@ async def add_stream(ctx, *args: int):
         for arg in args: stream[ctx.author.id]["queue"].append(arg)
         with open(stream_path, 'w') as f: json.dump(stream, f, indent=4)
         await ctx.message.add_reaction("✅")
-        await ctx.send(f"<@{ctx.author.id}> Sets ajoutés à la stream queue : toutefois ils n'ont pas été vérifiés, le bracket n'ayant pas commencé.")
+        await ctx.send(strings['addStream'].format(ctx.author.id))
         return
 
     # Otherwise we should check if the sets are open

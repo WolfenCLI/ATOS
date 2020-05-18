@@ -240,3 +240,5 @@ channelActivity3: "Désolé, tu as été DQ automatiquement car tu n'as pas ét�
 postStream1: "<@{0}> Il n'y a pas de stream en cours (ou prévu) pour ce tournoi à l'heure actuelle."
 
 setupStream: "<@{0}> Paramètres invalides pour le jeu **{1}**."
+
+addStream: "<@{0}> Sets ajoutés à la stream queue : toutefois ils n'ont pas été vérifiés, le bracket n'ayant pas commencé."
