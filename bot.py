@@ -1565,7 +1565,7 @@ async def attribution_role(event):
 
             try:
                 await event.member.add_roles(role)
-                await event.member.send(f"Le rôle **{role.name}** t'a été attribué avec succès : tu recevras des informations concernant les tournois *{game}* !")
+                await event.member.send(strings['rolePick1'].format(role.name, game))
             except (discord.HTTPException, discord.Forbidden):
                 pass
 
@@ -1574,7 +1574,7 @@ async def attribution_role(event):
 
             try:
                 await event.member.add_roles(role)
-                await event.member.send(f"Le rôle **{role.name}** t'a été attribué avec succès : tu seras contacté si un joueur cherche des combats sur *{game}* !")
+                await event.member.send(strings['rolePick2'].format(role.name, game))
             except (discord.HTTPException, discord.Forbidden):
                 pass
 

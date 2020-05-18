@@ -304,3 +304,6 @@ resultsAnnouncementPlacings: "{0} **__Résultats du tournoi {1}__**\n\n
   {9} {10}\n
   :link: **Bracket :** {11}\n\n
   {12}"
+
+rolePick1: "Le rôle **{0}** t'a été attribué avec succès : tu recevras des informations concernant les tournois *{1}* !"
+rolePick2: "Le rôle **{0}** t'a été attribué avec succès : tu seras contacté si un joueur cherche des combats sur *{1}* !"
