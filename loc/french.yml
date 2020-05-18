@@ -267,3 +267,6 @@ repelMathcesLoser: "<@&{0}> **DQ automatique de <@{1}> pour inactivité.**"
 repelMathces2: "<@&{0}> **Une DQ automatique a été executée pour inactivité :**\n-<@{1}> passe au round suivant.\n-<@{2}> est DQ du tournoi."
 repelMathces3: "<@&{0}> **Durée anormalement longue détectée** pour ce set, une décision d'un TO doit être prise"
 repelMathces4: ":information_source: Le set du channel <#{0}> prend anormalement du temps, une intervention est peut-être nécessaire."
+
+getStageList: ":map: **Stages légaux pour {0} :**\n:white_small_square: __Starters__ :\n"
+getStageListMsg: ":white_small_square: __Counterpicks__ :\n"

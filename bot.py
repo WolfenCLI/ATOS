@@ -1470,11 +1470,11 @@ async def get_stagelist(ctx):
     with open(tournoi_path, 'r+') as f: tournoi = json.load(f, object_hook=dateparser)
     with open(gamelist_path, 'r+') as f: gamelist = yaml.full_load(f)
 
-    msg = f":map: **Stages légaux pour {tournoi['game']} :**\n:white_small_square: __Starters__ :\n"
+    msg = strings['getStageList'].format(tournoi['game'])
     for stage in gamelist[tournoi['game']]['starters']: msg += f"- {stage}\n"
 
     if 'counterpicks' in gamelist[tournoi['game']]:
-        msg += ":white_small_square: __Counterpicks__ :\n"
+        msg += strings['getStageListMsg']
         for stage in gamelist[tournoi['game']]['counterpicks']: msg += f"- {stage}\n"
 
     await ctx.send(msg)
