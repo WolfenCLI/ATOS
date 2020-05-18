@@ -1693,9 +1693,7 @@ async def check_settings(ctx):
     for parametre in preferences:
         parametres += f":white_small_square: **{parametre}** : *{preferences[parametre]}*\n"
 
-    await ctx.send(f":gear: __Liste des paramètres modifiables sans redémarrage__ :\n{parametres}\n"
-                   f"Vous pouvez modifier chacun de ces paramètres avec la commande `{bot_prefix}set [paramètre] [valeur]`.\n"
-                   f"*Ces paramètres ne s'appliquent qu'au moment de la création d'un tournoi, et ne peuvent pas changer jusqu'à sa fin.*")
+    await ctx.send(strings['settingsCheck'].format(parametres, bot_prefix))
 
 
 ### Desync message

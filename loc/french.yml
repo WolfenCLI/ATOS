@@ -314,3 +314,7 @@ roleRemove2: "Le rôle **{0}** t'a été retiré avec succès : tu ne seras plus
 preferences1: "<@{0}> **Paramètre inconnu :** `{1}`."
 preferences2: "<@{0}> **Valeur incorrecte :** `{1}`."
 preferences3: "<@{0}> **Paramètre changé :** `{1} = {2}`."
+
+settingsCheck: ":gear: __Liste des paramètres modifiables sans redémarrage__ :\n{0}\n
+Vous pouvez modifier chacun de ces paramètres avec la commande `{1}set [paramètre] [valeur]`.\n
+*Ces paramètres ne s'appliquent qu'au moment de la création d'un tournoi, et ne peuvent pas changer jusqu'à sa fin.*"
