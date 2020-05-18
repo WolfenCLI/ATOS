@@ -318,3 +318,7 @@ preferences3: "<@{0}> **Paramètre changé :** `{1} = {2}`."
 settingsCheck: ":gear: __Liste des paramètres modifiables sans redémarrage__ :\n{0}\n
 Vous pouvez modifier chacun de ces paramètres avec la commande `{1}set [paramètre] [valeur]`.\n
 *Ces paramètres ne s'appliquent qu'au moment de la création d'un tournoi, et ne peuvent pas changer jusqu'à sa fin.*"
+
+commandError1: "<@{0}> Les paramètres de cette commande sont mal renseignés. Utilise `{1}help` pour en savoir plus."
+commandError2: "<@{0}> **Cooldown** : cette commande sera de nouveau disponible pour toi dans {1} secondes."
+commandError3: "<@{0}> Voulais-tu écrire autre chose ? Utilise `{1}help` pour avoir la liste des commandes."
