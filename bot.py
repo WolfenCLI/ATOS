@@ -1255,20 +1255,20 @@ async def list_stream(ctx):
         await ctx.message.add_reaction("🕐")
         return
 
-    msg = f":information_source: Codes d'accès au stream **{stream[ctx.author.id]['channel']}** :\n{get_access_stream(stream[ctx.author.id]['access'])}\n"
+    msg = strings['listStream1'].format(stream[ctx.author.id]['channel'], get_access_stream(stream[ctx.author.id]['access']))
 
     try:
         match = bracket[[x["suggested_play_order"] for x in bracket].index(stream[ctx.author.id]['on_stream'])]
     except KeyError: # bracket is empty
-        msg += ":stop_button: Le tournoi n'est probablement pas en cours.\n"
+        msg += strings['listStream2']
     except ValueError: # on stream not found
-        msg += ":stop_button: Aucun set on stream à l'heure actuelle.\n"
+        msg += strings['listStream3']
     else:
         for joueur in participants:
             if participants[joueur]["challonge"] == match["player1_id"]: player1 = participants[joueur]['display_name']
             if participants[joueur]["challonge"] == match["player2_id"]: player2 = participants[joueur]['display_name']
 
-        msg += f":arrow_forward: **Set on stream actuel** *({match['suggested_play_order']})* : **{player1}** vs **{player2}**\n"
+        msg += strings['listStream4'].format(match['suggested_play_order'], player1, player2)
 
     list_stream = ""
 
@@ -1287,9 +1287,9 @@ async def list_stream(ctx):
                 break
 
     if list_stream != "":
-        msg += f":play_pause: Liste des sets prévus pour passer on stream :\n{list_stream}"
+        msg += strings['listStream5'].format(list_stream)
     else:
-        msg += ":play_pause: Il n'y a aucun set prévu pour passer on stream."
+        msg += strings['listStream6']
 
     await ctx.send(msg)
 

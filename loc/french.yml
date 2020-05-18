@@ -242,3 +242,10 @@ postStream1: "<@{0}> Il n'y a pas de stream en cours (ou prévu) pour ce tournoi
 setupStream: "<@{0}> Paramètres invalides pour le jeu **{1}**."
 
 addStream: "<@{0}> Sets ajoutés à la stream queue : toutefois ils n'ont pas été vérifiés, le bracket n'ayant pas commencé."
+
+listStream1: ":information_source: Codes d'accès au stream **{0}** :\n{1}\n"
+listStream2: ":stop_button: Le tournoi n'est probablement pas en cours.\n"
+listStream3: ":stop_button: Aucun set on stream à l'heure actuelle.\n"
+listStream4: ":arrow_forward: **Set on stream actuel** *({0})* : **{1}** vs **{2}**\n"
+listStream5: ":play_pause: Liste des sets prévus pour passer on stream :\n{0}"
+listStream6: ":play_pause: Il n'y a aucun set prévu pour passer on stream."
