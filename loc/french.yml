@@ -236,3 +236,7 @@ sets1: ":arrow_forward: **{0}** ({1}) : <@{2}> vs <@{3}> {4}\n{5} {6}\n\n"
 channelActivity: ":timer: **DQ automatique de <@{0}> pour inactivité** : aucune manifestation à temps du joueur."
 channelActivity2: ":information_source: **DQ automatique** de <@{0}> pour inactivité, set n°{1}."
 channelActivity3: "Désolé, tu as été DQ automatiquement car tu n'as pas été actif sur ton channel de set dans les premières minutes qui ont suivi son lancement."
+
+postStream1: "<@{0}> Il n'y a pas de stream en cours (ou prévu) pour ce tournoi à l'heure actuelle."
+
+setupStream: "<@{0}> Paramètres invalides pour le jeu **{1}**."

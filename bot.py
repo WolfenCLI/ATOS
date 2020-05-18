@@ -1132,7 +1132,7 @@ async def post_stream(ctx):
     with open(stream_path, 'r+') as f: stream = json.load(f, object_pairs_hook=int_keys)
 
     if len(stream) == 0:
-        await ctx.send(f"<@{ctx.author.id}> Il n'y a pas de stream en cours (ou prévu) pour ce tournoi à l'heure actuelle.")
+        await ctx.send(strings['postStream1'].format(ctx.author.id))
 
     elif len(stream) == 1:
         await ctx.send(f"<@{ctx.author.id}> https://www.twitch.tv/{stream[next(iter(stream))]['channel']}")
@@ -1160,7 +1160,7 @@ async def setup_stream(ctx, *args):
 
     else:
         await ctx.message.add_reaction("⚠️")
-        await ctx.send(f"<@{ctx.author.id}> Paramètres invalides pour le jeu **{tournoi['game']}**.")
+        await ctx.send(strings['setupStream'].format(ctx.author.id, tournoi['game']))
         return
 
     with open(stream_path, 'w') as f: json.dump(stream, f, indent=4)
